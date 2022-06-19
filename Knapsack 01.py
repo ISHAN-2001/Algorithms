@@ -13,10 +13,13 @@ def main():
 	
 	for i in range(1,7):
 		for j in range(1,11):
+
 			if(weight[i-1]<=j):
-				dp[i][j]= max(val[i-1]+dp[i-1][j-weight[i-1]], dp[i-1][j]);
+				dp[i][j]= max(val[i-1]+dp[i-1][j-weight[i-1]], dp[i-1][j])
+
 			else:
 				dp[i][j]=dp[i-1][j]
+				
 	print(dp[6][10])
 
 if __name__ == "__main__":

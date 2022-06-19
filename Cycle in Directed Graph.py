@@ -5,11 +5,12 @@ sys.stdout = open('out.txt', 'w')
 
 # Code from here
 # Detecting Cycle in directed graph using DFS
-
+# Aliter can use graph colouring ;- see https://leetcode.com/problems/course-schedule/submissions/
 class Solution(object):
 	def Cycle(self,n,e,graph):
 		self.vis = [0]*(n+1)
 		self.dfsvis = [0]*(n+1)
+		self.col =[0]*(n+1)
 		self.graph = graph
 		self.n= n
 		self.e =e 
@@ -38,6 +39,26 @@ class Solution(object):
 
 		self.dfsvis[v] =0 
 		return False
+
+
+	def dfscol(self,vertex): # Returns True if cycle false if no cycle
+
+		self.col[vertex]=1 # vertex is being processed
+
+		for node in self.graph[vertex]:
+
+			if(self.col[node]==0):
+
+				if(self.dfscol(node)==True): #Cycle detected
+					return True
+
+			elif(self.col[node]==1): # cycle condition
+				return True
+
+		self.col[vertex]=2
+		return False # No cycle detected
+
+
 
 
 if __name__ == "__main__":

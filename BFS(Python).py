@@ -26,7 +26,7 @@ class Solution(object):
 
 
 if __name__ == "__main__":
-
+ 
 	n, e = map(int, input().split()) # n is no of vertices and e is no of edges
 	graph = defaultdict(list)        # adjacency list
 

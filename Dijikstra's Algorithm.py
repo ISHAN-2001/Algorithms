@@ -8,6 +8,14 @@ sys.stdout = open('out.txt', 'w')
 class Solution(object):
 
 	def Dijikstra(self,n,e,graph):
+		"""
+		Lazy Dijikstra is used. Node and its weight are sorted out 
+		automatically in priority queue.Some nodes are repeated in queue, so 
+		inefficient...But will work in leetcode.
+
+		In classic dijikstra we need to pick node with least weight manually.
+
+		"""
 		dist = [100000]*(n+1)
 		src = 1
 		dist[src] =0 

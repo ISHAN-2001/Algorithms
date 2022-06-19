@@ -1,52 +1,56 @@
-import sys
-sys.stdin = open('in.txt', 'r')
-sys.stdout = open('out.txt', 'w')
+class Node():
 
-# Start coding..
-class Node:
-	def __init__(self,data):
-		self.data = data
-		self.next = None
-
-class LinkedList:
-	#Write all functions here...
-	def __init__(self):
-		self.head = None
-
-	def append(self,new_data):
-
-		new_node = Node(new_data)
-
-		if(self.head==None):  #if list is empty
-			self.head=new_node
-			return
-
-		temp = self.head
-
-		while(temp.next != None):
-			temp =temp.next
-
-		temp.next = new_node
-		
-
-	def printList(self):
-
-		temp = self.head
-		while(temp):
-			print(temp.data,end=" ")
-			temp = temp.next
+	def __init__(self,val=0,next=None):
+		self.val = val 
+		self.next=next
 
 
-if __name__ == "__main__":
+## Linked List operations
 
-	llist = LinkedList()
+# 1. Reverse a Linked List
 
-	for _ in range(8):
-		x= int(input())
-		llist.append(x)
+def reverse(head):
 
-	llist.printList()
+	prev,after = None,None
+        
+	while head is not None:
 
+		after = head.next
+		head.next = prev
 
+		prev = head
+		head = after
 
+	return prev # new head
 
+# 2. Middle of LL
+
+def middle(head):
+
+	slow ,fast= head,head 
+
+	while fast and fast.next:
+
+		fast = fast.next.next 
+		slow= slow.next 
+
+	return slow # mid 
+
+# 3. LL Cycle
+
+def cycle(head):
+
+	if not head or not head.next:
+		return False
+
+	slow ,fast =head,head 
+
+	while fast and fast.next:
+
+		fast = fast.next.next 
+		slow = slow.next
+
+		if fast is slow:
+			return True
+
+	return False  

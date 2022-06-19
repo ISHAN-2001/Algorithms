@@ -20,7 +20,7 @@ class Solution(object):
 		for i in range(1,n+1):           # Do Bfs/Dfs for each connected component
 
 			if(self.colour[i]==-1):  
-				        
+				         
 				if(self.BFS(i)==False):  # For Bfs
 				 	return False
 
