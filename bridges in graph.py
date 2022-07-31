@@ -3,6 +3,8 @@ from collections import defaultdict,deque
 sys.stdin = open('in.txt', 'r')
 sys.stdout = open('out.txt', 'w')
 
+#https://leetcode.com/problems/critical-connections-in-a-network/
+
 #Code from here
 class Solution(object):
 
@@ -14,7 +16,7 @@ class Solution(object):
 
 		self.find =[float('inf')]*(n+1)
 
-		self.dfs(1,-1)
+		self.dfs(1,-1) # or self.dfs(1,1) # own parent
 
 	def dfs(self,vertex,parent):
 
@@ -22,14 +24,15 @@ class Solution(object):
 		self.time+=1
 		self.vis[vertex]=1
 
-		#do dfs
+		#1. Do dfs of unvisited
 		for node in graph[vertex]:
 
 			if self.vis[node]==0:
 				self.dfs(node,vertex)
 
 
-		# find arr. minimization and find bridges
+		#2. minimize find arr of a vertex by comparing all adjacent nodes
+		#   exept parent
 		for node in graph[vertex]:
 
 			if node==parent:
@@ -37,8 +40,8 @@ class Solution(object):
 
 			self.find[vertex]= min(self.find[vertex],self.find[node])
 
-		# bridge condition  
-		if self.find[vertex]>self.find[parent]:
+		# bridge condition '>' means no better path 
+		if self.find[vertex]>self.find[parent]:       #self.find[-1] at F(1,-1) may break
 			print("{}-->{}".format(vertex,parent))
 
 		return

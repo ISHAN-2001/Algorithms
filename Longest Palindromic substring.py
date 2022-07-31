@@ -31,11 +31,39 @@ def main(s):
 
 	print(s[x:y+1])   #x is starting and y is ending
 
+def aliter(s):
 
-	
+	n= len(s)
+	ans = -1
+
+	for i in range(n):
+
+		# check for odd substr
+		l=r=i 
+		while(l>=0 and r<n):
+			if s[l]==s[r]:
+				ans=max(ans,r-l+1)
+				l-=1
+				r+=1
+			else:
+				break
+
+		# for even substring
+		l=i;r=i+1
+		while(l>=0 and r<n):
+			if s[l]==s[r]:
+				ans=max(ans,r-l+1)
+				l-=1
+				r+=1
+			else:
+				break
+
+	return ans
 
 if __name__ == "__main__":
 
 	s = input()
 	main(s)
 
+
+# for Palindromic Subsequence take Lcs of string and its palindrome

@@ -54,3 +54,6 @@ def cycle(head):
 			return True
 
 	return False  
+
+# 4. Sort a LL
+# use merge sort (divide into half and merge)

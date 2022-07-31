@@ -7,6 +7,8 @@ sys.stdout = open('out.txt', 'w')
 #Code from here
 class Solution(object):
 	def Krushkals(self,n,e,edges):
+
+		edges.sort()
 		self.n = n
 		self.e = e
 		self.edges = edges
@@ -15,7 +17,7 @@ class Solution(object):
 		self.parent = [0]*(n+1)
 		mst=[]
 		cost =0
-
+ 
 		for i in range(1,n+1):     # Make set
 			self.parent[i] = i
 
@@ -65,7 +67,7 @@ if __name__ == "__main__":
 		edges.append((d,v1,v2))
 
 			# main(n,e,graph)
-	edges.sort()
+	#edges.sort()
 	a=Solution()
 	a.Krushkals(n,e,edges)
 

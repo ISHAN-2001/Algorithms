@@ -22,5 +22,3 @@ def Solution(edges):
 if __name__ == '__main__':
 	edges=[[1,2],[2,3],[4,2]]
 	Solution(edges)
-
-
