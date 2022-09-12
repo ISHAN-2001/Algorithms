@@ -1,4 +1,4 @@
-class Node():
+class Node:
 
 	def __init__(self,val=0,next=None):
 		self.val = val 
@@ -57,3 +57,51 @@ def cycle(head):
 
 # 4. Sort a LL
 # use merge sort (divide into half and merge)
+class Solution:
+    
+    # merge sort
+    def sortList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        
+        if not head or not head.next:
+            return head
+        
+        # middle element
+        slow,fast,prev  = head,head,None
+        
+        
+        while fast and fast.next:
+            prev=slow
+            fast = fast.next.next
+            slow= slow.next
+            
+        mid = prev
+        midnext = prev.next
+        mid.next = None
+        
+        l1 = self.sortList(head)
+        l2 = self.sortList(midnext)
+        
+        l3 = self.merge(l1,l2)
+        
+        return l3
+    
+    def merge(self,l1,l2):
+        
+        head = ListNode(-1)
+        l3 = head
+        
+        while l1 and l2:
+            
+            if l1.val <= l2.val:
+                l3.next = ListNode(l1.val)
+                l1=l1.next
+                l3=l3.next
+                
+            else:
+                l3.next = ListNode(l2.val)
+                l2=l2.next
+                l3=l3.next
+                
+        l3.next = l1 if l1 else l2
+            
+        return head.next

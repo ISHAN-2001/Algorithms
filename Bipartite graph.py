@@ -5,8 +5,8 @@ sys.stdout = open('out.txt', 'w')
 
 # Code from here
 
-# Concept:- node can be divided into two groups.. node in each group connected to 
-# contd.. node in other grp only .. no nodes are connected to other in same grp.
+# Concept:- node can be divided into two groups.. node in each group connected to...
+# ... node in other grp only .. no nodes are connected to other in same grp.
 
 # This can be done using DFS/BFS.
 # In Bipartite graphs no two adjacent nodes have same colour
@@ -22,7 +22,7 @@ class Solution(object):
 
 		for i in range(1,n+1):           # Do Bfs/Dfs for each connected component
 
-			if(self.colour[i]==-1):  
+			if(self.colour[i]==-1):    
 				         
 				if(self.BFS(i)==False):  # For Bfs
 				 	return False

@@ -10,7 +10,7 @@ class Solution(object):
 	def BFS(self,n,e,graph):
 		vis= [0]*(n+1)
 		
-		queue = []
+		queue = [] # better use a deque 
 		queue.append(1)
 
 		vis[1]=1

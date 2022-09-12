@@ -16,7 +16,7 @@ class Solution(object):
 		for vertex in range(1,n+1):
 
 			if(self.vis[vertex]==0):
-
+ 
 				if(self.dfs(vertex,-1)):
 					return True
 

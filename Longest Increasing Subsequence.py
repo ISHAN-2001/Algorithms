@@ -1,5 +1,5 @@
 import sys
-from collections import defaultdict
+import bisect
 sys.stdin = open('in.txt', 'r')
 sys.stdout = open('out.txt', 'w')
 
@@ -10,7 +10,6 @@ class Solution(object):
 		n= len(arr)
 		maximum = 1
 		lis = [1]*(n)
-		cnt= defaultdict(int)
 		cnt[1] =1
 
 		for i in range(1,n):
@@ -38,6 +37,21 @@ class Solution(object):
 
 		return s[::-1]
 
+	def solve2(self,nums): #Binary Search (Recommended)
+
+		n = len(nums)
+		lcs = [nums[0]]
+
+		for i in range(1,n):
+
+			if nums[i]>lcs[-1]:
+				lcs.append(nums[i])
+
+			else:
+				ind = bisect.bisect_left(lcs, nums[i])
+				lcs[ind] =nums[i]
+
+		return len(lcs)
 
 
 
